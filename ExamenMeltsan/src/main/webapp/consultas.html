@@ -1,0 +1,40 @@
+<div class="container">
+	<div align="CENTER">CONSULTAS</div>
+	<div align="right">
+
+		<label> <font color="blue" size="5px">BUSCAR:</font> <input
+			ng-model="filters.myfilter">
+		</label> <a href="#/newconsulta">
+			<button type="button" class="btn btn-default btn-lg"
+				ng-click="nuevaConsulta();" style="background: #00cc66">
+				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+				NUEVA CONSULTA
+			</button>
+		</a>
+	</div>
+	<form>
+		<table ng-table="tableParams"
+			class="table table-striped  table-bordered">
+			<tr ng-repeat="registro in $data">
+				<td data-title="'CLAVE'" class="active" sortable="'roldi'"
+					header-class="flechas_columnas">{{registro.roldi}}</td>
+				<td data-title="'PACIENTES'" class="text" sortable="'rol'"
+					header-class="flechas_columnas">{{registro.rol}}</td>
+				<td data-title="'DOCTOR'" class="active" sortable="'vigencia'"
+					header-class="flechas_columnas">{{registro.vigencia}}</td>
+				<td data-title="'FECHA'" class="active" sortable="'creado_pro'"
+					header-class="flechas_columnas">{{registro.creado_pro}}</td>
+				<td data-title="'ENFERMEDAD'" class="active" sortable="'fec_creacion'"
+					header-class="flechas_columnas">{{registro.fec_creacion}}</td>
+				<td data-title="'MEDICAMENTO'" class="active" sortable="'actualizado_por'"
+					header-class="flechas_columnas">{{registro.actualizado_por}}</td>
+
+				<td data-title="'Editar'" class="active" sortable="'lectura'"
+					header-class="flechas_columnas" align="center"><span
+					class="glyphicon glyphicon-pencil"
+					ng-click="ventanaActualizar(registro);" style="background: #ffff4d">
+				</span></td>
+			</tr>
+		</table>
+	</form>
+</div>

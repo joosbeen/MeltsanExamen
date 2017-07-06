@@ -1,0 +1,189 @@
+
+<div class="container">
+<div align="CENTER"><h1 class="offset-sm-4 col-sm-10">MEDICAMENTOS</h1></div>
+	
+	<div align="right">
+<button ng-click="ventanaActualizar(registro)">EDITAR</button>
+		<label> <font color="blue" size="5px">BUSCAR:</font> <input
+			ng-model="filters.myfilter">
+		</label>
+
+		<button type="button" class="btn btn-default btn-lg"
+			ng-click="ventanaAgregar()" style="background: #00cc66">
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+			AGREGAR
+		</button>
+
+	</div>
+	<br>
+	<form>
+		<table ng-table="tableParams"
+			class="table table-striped  table-bordered">
+			<tr ng-repeat="registro in $data">
+				<td data-title="'MEDICAMENTO'" class="active"
+					sortable="'medicamento'" header-class="flechas_columnas">{{registro.nombre}}</td>
+				<td data-title="'CODIGO'" class="text" sortable="'codigo'"
+					header-class="flechas_columnas">{{registro.codigo}}</td>
+				<td data-title="'COMPUESTOS 1'" class="active"
+					sortable="'compuestos1'" header-class="flechas_columnas">{{registro.compuestos1}}</td>
+				<td data-title="'COMPUESTOS 2'" class="active"
+					sortable="'compuestos2'" header-class="flechas_columnas">{{registro.compuestos1}}</td>
+				<td data-title="'Editar'" class="active" sortable="'lectura'"
+					header-class="flechas_columnas" align="center"><span
+					class="glyphicon glyphicon-pencil"
+					ng-click="ventanaActualizar(registro)" style="background: #ffff4d">
+				</span></td>
+			</tr>
+		</table>
+
+	</form>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<form name="forma">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">NUEVO MEDICAMENTO</h4>
+				</div>
+
+				<div class="modal-body">
+					<div class="form-group row"
+						ng-class="{'has-error'  : forma.nombre.$invalid}">
+						<div class="offset-sm-2 col-sm-10">
+							NOMBRE:<input type="text" class="form-control"
+								ng-model="parametros.nombre" placeholder="ROL" name="nombre" required>
+						</div>
+					</div>
+					<div class="form-group row"
+						ng-class="{'has-success' : parametros.sustancia1.$valid}">
+						<!-- ng-class="{'has-error' : forma.actualizadox.$invalid}" -->
+						<div class="offset-sm-2 col-sm-10">
+							SUSTANCIA 1:<br> <select ng-model="listas.selectRolesValue"
+								ng-model="parametros.sustancia1"
+								ng-click="obtenerSustancia()" name="sustancia1"
+								ng-options="x.dsRol for x in listas.roles" required> 
+								<!-- ng-options="x.dsRol for x in listas.roles" -->
+
+							</select>
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="offset-sm-2 col-sm-10">
+							CANTIDAD:<input type="text" class="form-control" name="cantidad1"
+								ng-model="parametros.cantidad1" placeholder="CANTIDAD" required>
+						</div>
+					</div>
+					<div class="form-group row"
+						ng-class="{'has-success' : parametros.sustancia2.$valid}">
+						<!-- ng-class="{'has-error' : forma.actualizadox.$invalid}" -->
+						<div class="offset-sm-2 col-sm-10">
+							SUSTANCIA 2:<br> <select ng-model="listas.selectRolesValue"
+								ng-model="parametros.sustancia2"
+								ng-click="obtenerSustancia()" name="sustancia2"
+								ng-options="x.dsRol for x in listas.roles" required>
+								<!-- ng-options="x.dsRol for x in listas.roles" -->
+
+							</select>
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="offset-sm-2 col-sm-10">
+							CANTIDAD:<input type="text" class="form-control" name="cantidad2"
+								ng-model="parametros.cantidad2" placeholder="CANTIDAD" required>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+					<button type="button" class="btn btn-primary"
+						ng-click="InsertarDatosRoles()" ng-disabled="forma.$invalid">AGREGAR</button>
+					<!-- ng-disabled="forma.$invalid" -->
+				</div>
+			</div>
+		</form>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- 
+<!-- /.modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="myModalEditar" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<form name="forma">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">EDITAR MEDICAMENTO</h4>
+				</div>
+
+				<div class="modal-body">
+					<div class="form-group row"
+						ng-class="{'has-error'  : forma.nombre.$invalid}">
+						<div class="offset-sm-2 col-sm-10">
+							NOMBRE:<input type="text" class="form-control"
+								ng-model="parametros.nombre" placeholder="ROL" name="nombre" required>
+						</div>
+					</div>
+					<div class="form-group row"
+						ng-class="{'has-success' : forma.sustancia1.$valid}">
+						<!-- ng-class="{'has-error' : forma.actualizadox.$invalid}" -->
+						<div class="offset-sm-2 col-sm-10">
+							SUSTANCIA 1:<br> <select ng-model="listas.selectRolesValue"
+								ng-model="parametros.sustancia1"
+								ng-click="obtenerCreador()" name="sustancia1"
+								ng-options="x.dsRol for x in listas.roles" required> 
+								<!-- ng-options="x.dsRol for x in listas.roles" -->
+
+							</select>
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="offset-sm-2 col-sm-10">
+							CANTIDAD:<input type="text" class="form-control" name="cantidad1"
+								ng-model="parametros.cantidad1" placeholder="CANTIDAD" required>
+						</div>
+					</div>
+					<div class="form-group row"
+						ng-class="{'has-success' : forma.sustancia2.$valid}">
+						<!-- ng-class="{'has-error' : forma.actualizadox.$invalid}" -->
+						<div class="offset-sm-2 col-sm-10">
+							SUSTANCIA 2:<br> <select ng-model="listas.selectRolesValue"
+								ng-model="parametros.sustancia2"
+								ng-click="obtenerCreador()" name="sustancia2"
+								ng-options="x.dsRol for x in listas.roles" required>
+								<!-- ng-options="x.dsRol for x in listas.roles" -->
+
+							</select>
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="offset-sm-2 col-sm-10">
+							CANTIDAD:<input type="text" class="form-control" name="cantidad2"
+								ng-model="parametros.cantidad2" placeholder="CANTIDAD" required>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+					<button type="button" class="btn btn-primary"
+						ng-click="InsertarDatosRoles()" ng-disabled="forma.$invalid">EDITAR</button>
+					<!-- ng-disabled="forma.$invalid" -->
+				</div>
+			</div>
+		</form>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- 
+<!-- /.modal -->

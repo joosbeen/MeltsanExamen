@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean name="LoginDao" class="com.mts.login.dao.LoginDaoImpl">
+		<property name="dataSource" ref="dataSource"></property>
+
+		<property name="qryRoles">
+			<value>
+				<![CDATA[
+					SELECT ROLID,ROL FROM MTS_SEG_ROLES
+				]]>
+			</value>
+		</property>
+
+
+		<property name="qryPantalllas">
+			<value>
+				<![CDATA[
+						SELECT * FROM MTS_SEG_PANTALLAS
+				]]>
+			</value>
+		</property>
+		<!-- OBTENER LA LISTA DE USUARIOS -->
+		<property name="qryListaRoles">
+			<value>
+				<![CDATA[
+						SELECT * FROM MTS_SEG_ROLES WHERE VIGENCIA = 'S'
+				]]>
+			</value>
+		</property>
+
+		<!-- INSERTAR UN NUEVO USUARIO -->
+		<property name="qryInsertarRoles">
+			<value>
+				<![CDATA[
+				
+				INSERT INTO 
+				MTS_SEG_ROLES (ROLID, ROL, VIGENCIA, CREADO_POR, FEC_CREACION, FEC_ACTUALIZACION, ACTUALIZADO_POR, DS_ROL,SW_ANALISTA) 
+				VALUES 
+				((SELECT MAX(ROLID) + 1 FROM MTS_SEG_ROLES),?,?,'ADMIN',(SELECT SYSDATE FROM DUAL),(SELECT SYSDATE FROM DUAL),'ADMIN',?,?)
+				]]>
+			</value>
+		</property>
+
+		<!-- ACTUALIZAR USUARIO -->
+		<property name="qryActualizarRoles">
+			<value> <![CDATA[ 
+			UPDATE MTS_SEG_ROLES 
+			SET VIGENCIA = ?, FEC_ACTUALIZACION = (SELECT SYSDATE FROM DUAL),  ACTUALIZADO_POR= ?, DS_ROL = ?, SW_ANALISTA = ? 
+			WHERE ROLID = ? 
+			]]>
+			</value>
+		</property>
+		
+		 <!-- ELIMINAR USUARIO -->
+		
+		<property name="qryEliminarRoles">
+			<value> <![CDATA[ 
+			UPDATE MTS_SEG_ROLES  SET VIGENCIA = 'S' WHERE ROLID = ?
+			 ]]>
+			</value>
+		</property>
+
+	</bean>
+</beans>

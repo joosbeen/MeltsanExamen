@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, shrink-to-fit=no, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>PRACTICA</title>
+
+<!-- Bootstrap Core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="css/simple-sidebar.css" rel="stylesheet">
+
+
+<script src="bower_components/jquery/dist/jquery-1.11.2.min.js"></script>
+<script src="bower_components/jquery/dist/jquery-migrate-1.2.1.min.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/ngprogress/build/ngProgress.min.js"></script>
+<script src="bower_components/ui-bootstrap-tpls-0.12.0.min.js"></script>
+<script src="bower_components/ng-table/ng-table.js"></script>
+<script src="bower_components/ng-table/angu-fixed-header-table.js"></script>
+
+
+</head>
+<script src="js/ventanas.js"></script>
+<script src="js/paciente.js"></script>
+<script src="js/medico.js"></script>
+<script src="js/consultas.js"></script>
+<script src="js/nosivos.js"></script>
+<script src="js/medicamentos.js"></script>
+
+<body ng-app="webappApp" background="#ffcce6">
+
+	<div align="CENTER" >
+		<h1>Examen Meltsan</h1>		 
+	</div>
+	<ol class="breadcrumb">
+			<li><a href="#/">PACIENTES</a></li>
+			<li><a href="#/medico">DOCTORES</a></li>
+			<li><a href="#/consulta">CONSULTAS</a></li>
+			<li><a href="#/medicamentos">MEDICAMENTOS</a></li>
+			<li><a href="#/nosivos">NOSIVOS</a></li>
+		</ol>
+	<hr align="center">
+	<div class="center" ng-view=""></div>
+	
+
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</body>
+</html>

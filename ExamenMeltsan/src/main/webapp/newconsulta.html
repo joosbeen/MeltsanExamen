@@ -1,0 +1,56 @@
+<div class="container">
+<div align="center"> <h1>NUEVA CONSULTA</h1> </div>
+	<div class="form-group row"
+		ng-class="{'has-success' : forma.actualizadox.$valid}">
+		<!-- ng-class="{'has-error' : forma.actualizadox.$invalid}" -->
+		<div class="offset-sm-2 col-sm-10">
+			PACIENTE:<br>
+			<select ng-model="listas.selectRolesValue"
+				ng-model="parametros.actualizado_por" ng-click="obtenerCreador()"
+				name="actualizadox" ng-options="x.dsRol for x in listas.roles">
+				<!-- ng-options="x.dsRol for x in listas.roles" -->
+
+			</select>
+		</div>
+	</div>
+	<div class="form-group row"
+		ng-class="{'has-success' : forma.actualizadox.$valid}">
+		<!-- ng-class="{'has-error' : forma.actualizadox.$invalid}" -->
+		<div class="offset-sm-2 col-sm-10">
+			DOCTOR:<br>
+			<select ng-model="listas.selectRolesValue"
+				ng-model="parametros.actualizado_por" ng-click="obtenerCreador()"
+				name="actualizadox" ng-options="x.dsRol for x in listas.roles">
+				<!-- ng-options="x.dsRol for x in listas.roles" -->
+
+			</select>
+		</div>
+	</div>
+	<div class="form-group row"
+		ng-class="{'has-success' : forma.actualizadox.$valid}">
+		<!-- ng-class="{'has-error' : forma.actualizadox.$invalid}" -->
+		<div class="offset-sm-2 col-sm-10">
+			ENFERMEDAD:<br>
+			<select ng-model="listas.selectRolesValue"
+				ng-model="parametros.actualizado_por" ng-click="obtenerCreador()"
+				name="actualizadox" ng-options="x.dsRol for x in listas.roles">
+				<!-- ng-options="x.dsRol for x in listas.roles" -->
+
+			</select>
+		</div>
+	</div>
+	<div class="form-group row"
+		ng-class="{'has-success' : forma.actualizadox.$valid}">
+		<!-- ng-class="{'has-error' : forma.actualizadox.$invalid}" -->
+		<div class="offset-sm-2 col-sm-10">
+			MEDICAMENTO:<br>
+			<select ng-model="listas.selectRolesValue"
+				ng-model="parametros.actualizado_por" ng-click="obtenerCreador()"
+				name="actualizadox" ng-options="x.dsRol for x in listas.roles">
+				<!-- ng-options="x.dsRol for x in listas.roles" -->
+
+			</select>
+		</div>
+	</div>
+</div>
+
